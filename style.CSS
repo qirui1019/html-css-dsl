@@ -1,0 +1,260 @@
+@page {
+  size: 148mm 210mm;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("assets/word_style/ORBITRON-REGULAR.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("assets/word_style/ORBITRON-BOLD.TTF") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("assets/word_style/ORBITRON-BLACK.TTF") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "New Frank";
+  src: url("assets/word_style/NEW FRANK REGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "New Frank";
+  src: url("assets/word_style/NEW FRANK BOLD.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --page-width: 148mm;
+  --page-height: 210mm;
+  --page-margin: 10mm;
+  --ink: #111111;
+  --soft-gray: #eeeeee;
+  --bottom-gray: #d9d9d9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f2f2f2;
+  color: var(--ink);
+  font-family: "New Frank", Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 12.5pt;
+}
+
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+}
+
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  margin: 0 auto;
+  overflow: hidden;
+  page-break-after: always;
+  background: #ffffff;
+}
+
+.page--cover {
+  position: relative;
+}
+
+/* Top cover block: gray clipped background plus cover copy. */
+.cover-hero {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - var(--page-margin));
+  min-height: 108mm;
+  padding: 10mm 13mm 16mm 10mm;
+  background-image: url("assets/coverTopShape.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
+}
+
+.brand-logo {
+  width: 50mm;
+  margin: 0 0 13mm;
+}
+
+.brand-logo__image {
+  width: 50mm;
+  height: auto;
+}
+
+.product-name {
+  max-width: 105mm;
+  color: var(--ink);
+  font-family: "Orbitron", Arial, sans-serif;
+  font-size: 32pt;
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.manual-type {
+  max-width: 95mm;
+  margin-top: 4mm;
+  color: var(--ink);
+  font-family: "Orbitron", Arial, sans-serif;
+  font-size: 18pt;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+}
+
+.cover-divider {
+  width: 76mm;
+  height: 0.55mm;
+  margin: 5mm 0 5.5mm;
+  background: var(--ink);
+}
+
+.important-note {
+  max-width: 95mm;
+  color: var(--ink);
+}
+
+.important-note-title {
+  margin-bottom: 1.4mm;
+  font-family: "New Frank", Arial, sans-serif;
+  font-size: 13pt;
+  font-weight: 700;
+  line-height: 15pt;
+}
+
+.important-note-text {
+  font-family: "New Frank", Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: 400;
+  line-height: 12.5pt;
+  overflow-wrap: break-word;
+}
+
+/* Product image is centered in the lower half without stretching the source. */
+.cover-product-visual {
+  position: absolute;
+  z-index: 2;
+  top: 97mm;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--page-margin);
+  pointer-events: none;
+}
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.product-image__img {
+  width: auto;
+  max-width: 92mm;
+  max-height: 88mm;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Bottom information boxes stay separate, with fixed height and content-based width. */
+.cover-bottom-bar {
+  position: absolute;
+  z-index: 4;
+  right: var(--page-margin);
+  bottom: var(--page-margin);
+  display: flex;
+  gap: 3mm;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bottom-info-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 10mm;
+  min-width: 20mm;
+  padding: 0 5mm;
+  background: var(--bottom-gray);
+  color: var(--ink);
+  font-family: "New Frank", Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.bottom-info-box--email {
+  font-weight: 700;
+}
+
+/* Decorative arrow artwork: one transparent PNG, kept out of document flow. */
+.cover-arrow-pattern {
+  position: absolute;
+  z-index: 0;
+  left: var(--page-margin);
+  bottom: 0;
+  width: 68mm;
+  pointer-events: none;
+}
+
+.cover-arrow-pattern__image {
+  width: 100%;
+  height: auto;
+}
+
+@media print {
+  html,
+  body {
+    width: var(--page-width);
+    min-height: var(--page-height);
+    background: transparent;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+}

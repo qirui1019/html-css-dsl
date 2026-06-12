@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SEESII Instruction Manual - Cover</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- SEESII 封面页 -->
+<section class="page page--cover" data-page-type="coverPage">
+
+  <!-- 封面背景装饰模块：强布局模块，建议未来按模块调用 -->
+  <div class="module cover-background" data-module-type="coverBackground">
+    
+    <!-- 顶部灰底斜切背景 -->
+    <div
+      class="element cover-top-shape"
+      data-element-type="coverTopShape"
+      data-role="decoration"
+    >
+        <img src="assets/coverTopShape.png" alt="Cover Top Shape Decoration" class="cover-top-shape__image">
+    </div>
+    
+    <!-- 底部灰底信息条 -->
+    <div
+      class="element cover-bottom-shape"
+      data-element-type="coverBottomShape"
+      data-role="decoration"
+    ></div>
+
+    <!-- 左下角箭头纹理 -->
+    <div
+      class="element cover-arrow-pattern"
+      data-element-type="coverArrowPattern"
+      data-role="decoration"
+    ></div>
+  </div>
+
+  <!-- 封面主视觉模块：强布局模块，建议未来按模块调用 -->
+  <div class="module cover-hero" data-module-type="coverHero">
+
+    <!-- 品牌 Logo：内容元素 -->
+    <div
+      class="element brand-logo"
+      data-element-type="brandLogo"
+      data-bind="cover.brandLogo"
+    >
+      <img
+        src="assets/logo.svg"
+        alt="SEESII POWER TOOLS Logo"
+        class="brand-logo__image"
+      >
+    </div>
+
+    <!-- 产品名称：内容元素 -->
+    <h1
+      class="element product-name"
+      data-element-type="productName"
+      data-bind="cover.productName"
+    >
+      CORDLESS NAIL GUN
+    </h1>
+
+    <!-- 说明书类型：内容元素 -->
+    <h2
+      class="element manual-type"
+      data-element-type="manualType"
+      data-bind="cover.manualType"
+    >
+      INSTRUCTION MANUAL
+    </h2>
+
+    <!-- 分隔线：视觉元素 -->
+    <div
+      class="element cover-divider"
+      data-element-type="dividerLine"
+      data-role="decoration"
+    ></div>
+
+    <!-- 重要提示：内容元素组，未来也可以作为一个小模块处理 -->
+    <div
+      class="element important-note"
+      data-element-type="importantNote"
+      data-bind="cover.importantNote"
+    >
+      <div class="important-note__title">IMPORTANT NOTE:</div>
+
+      <ol class="important-note__list">
+        <li class="important-note__item">
+          Carefully read through and understand these instructions before using the product.
+        </li>
+        <li class="important-note__item">
+          After-sales Email Address:
+          <span
+            class="important-note__email"
+            data-element-type="supportEmailInline"
+            data-bind="cover.supportEmail"
+          >
+            seesii-tiktok-shop@outlook.com
+          </span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- 产品图片：内容元素 -->
+    <div
+      class="element product-image"
+      data-element-type="productImage"
+      data-bind="cover.productImage"
+    >
+      <div class="product-image__placeholder">
+        Product Image Placeholder
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 封面底部信息条模块：强布局模块，建议未来按模块调用 -->
+  <div class="module cover-bottom-bar" data-module-type="coverBottomBar">
+
+    <!-- 产品型号：内容元素 -->
+    <div
+      class="element model-text"
+      data-element-type="modelText"
+      data-bind="cover.model"
+    >
+      HKF50
+    </div>
+
+    <!-- 底部售后邮箱：内容元素 -->
+    <div
+      class="element support-email"
+      data-element-type="supportEmail"
+      data-bind="cover.supportEmail"
+    >
+      seesii-tiktok-shop@outlook.com
+    </div>
+
+  </div>
+
+</section>
+</body>
+</html>
+

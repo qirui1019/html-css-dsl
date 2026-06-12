@@ -6,50 +6,137 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section class="page page--cover" data-page-type="coverPage">
+<!-- SEESII 封面页 -->
+<section class="page page--cover" data-page-type="coverPage">
 
-    <!-- 封面主模块 -->
-    <div class="module cover-hero" data-module-type="coverHero">
+  <!-- 封面主视觉模块 -->
+  <div
+    class="module cover-hero"
+    data-module-type="coverHero"
+    data-background-source="assets/coverTopShape.png"
+  >
 
-      <!-- 品牌 Logo -->
-      <div class="element brand-logo" data-element-type="brandLogo" data-bind="cover.brandLogo">
-        SEESII POWER TOOLS
-      </div>
-
-      <!-- 产品名称 -->
-      <h1 class="element product-name" data-element-type="productName" data-bind="cover.productName">
-        Automatic Submersible Water Pump
-      </h1>
-
-      <!-- 说明书类型 -->
-      <h2 class="element manual-type" data-element-type="manualType" data-bind="cover.manualType">
-        INSTRUCTION MANUAL
-      </h2>
-
-      <!-- 重要提示 -->
-      <div class="element important-note" data-element-type="importantNote" data-bind="cover.importantNote">
-        <strong>IMPORTANT NOTE:</strong>
-        <p>1. Please read these instructions carefully before use.</p>
-        <p>2. After-sales Support Email: support@seesiius.com</p>
-      </div>
-
-      <!-- 产品图占位 -->
-      <div class="element product-image-placeholder" data-element-type="productImage" data-bind="cover.productImage">
-        产品主图占位
-      </div>
-
+    <!-- 品牌 Logo -->
+    <div
+      class="element brand-logo"
+      data-element-type="brandLogo"
+      data-bind="cover.brandLogo"
+    >
+      <img
+        src="assets/logo.png"
+        alt="SEESII POWER TOOLS Logo"
+        class="brand-logo__image"
+      >
     </div>
 
-    <!-- 底部信息条 -->
-    <div class="module cover-bottom-bar" data-module-type="coverBottomBar">
-      <div class="element model-text" data-element-type="model" data-bind="cover.model">
-        BCP75020
+    <!-- 产品名称 -->
+    <h1
+      class="element product-name"
+      data-element-type="productName"
+      data-bind="cover.productName"
+    >
+      CORDLESS NAIL GUN
+    </h1>
+
+    <!-- 说明书类型 -->
+    <h2
+      class="element manual-type"
+      data-element-type="manualType"
+      data-bind="cover.manualType"
+    >
+      INSTRUCTION MANUAL
+    </h2>
+
+    <!-- 分隔线 -->
+    <div
+      class="element cover-divider"
+      data-element-type="dividerLine"
+      data-role="decoration"
+    ></div>
+
+    <!-- 重要提示 -->
+    <div
+      class="module important-note"
+      data-module-type="importantNote"
+    >
+      <div
+        class="element important-note-title"
+        data-element-type="importantNoteTitle"
+        data-bind="cover.importantNote.title"
+      >
+        IMPORTANT NOTE
       </div>
-      <div class="element support-email" data-element-type="supportEmail" data-bind="cover.supportEmail">
-        support@seesiius.com
+
+      <div
+        class="element important-note-text"
+        data-element-type="importantNoteText"
+        data-bind="cover.importantNote.text"
+      >
+        Please read these instructions carefully before use.
       </div>
     </div>
+  </div>
 
-  </section>
+  <!-- 产品图片模块 -->
+  <div
+    class="module cover-product-visual"
+    data-module-type="coverProductVisual"
+  >
+    <div
+      class="element product-image"
+      data-element-type="productImage"
+      data-bind="cover.productImage"
+      data-role="image"
+    >
+      <img
+        src="assets/productImage.png"
+        alt="Product Image"
+        class="product-image__img"
+        data-bind-src="cover.productImage.src"
+      >
+    </div>
+  </div>
+
+  <!-- 封面底部信息条模块 -->
+  <div
+    class="module cover-bottom-bar"
+    data-module-type="coverBottomBar"
+  >
+    <!-- 左侧型号灰底框 -->
+    <div
+      class="element bottom-info-box bottom-info-box--model"
+      data-element-type="modelText"
+      data-bind="cover.model"
+      data-role="text"
+    >
+      HKF50
+    </div>
+
+    <!-- 右侧邮箱灰底框 -->
+    <div
+      class="element bottom-info-box bottom-info-box--email"
+      data-element-type="supportEmail"
+      data-bind="cover.supportEmail"
+      data-role="text"
+    >
+      seesii-tiktok-shop@outlook.com
+    </div>
+  </div>
+
+  <!-- 左下角箭头纹理装饰 -->
+  <div
+    class="element cover-arrow-pattern"
+    data-element-type="coverArrowPattern"
+    data-role="decoration"
+  >
+    <img
+      src="assets/threeGreyArrow.png"
+      alt="Three Grey Arrows"
+      class="cover-arrow-pattern__image"
+    >
+  </div>
+
+</section>
 </body>
 </html>
+
