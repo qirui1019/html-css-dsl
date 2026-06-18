@@ -1,0 +1,542 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seesii.local/schemas/manual-dsl.schema.json",
+  "title": "SEESII Manual DSL Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "cover",
+    "catalog",
+    "content"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brand",
+        "language",
+        "version"
+      ],
+      "properties": {
+        "brand": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "cover": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productName",
+        "manualType",
+        "importantNote",
+        "productImage",
+        "model",
+        "supportEmail"
+      ],
+      "properties": {
+        "productName": {
+          "type": "string"
+        },
+        "manualType": {
+          "type": "string"
+        },
+        "importantNote": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "text"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "text": {
+              "$ref": "#/$defs/richText"
+            }
+          }
+        },
+        "productImage": {
+          "$ref": "#/$defs/imagePlaceholder"
+        },
+        "model": {
+          "$ref": "#/$defs/richText"
+        },
+        "supportEmail": {
+          "$ref": "#/$defs/richText"
+        }
+      }
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supportEmail",
+        "title",
+        "sections"
+      ],
+      "properties": {
+        "supportEmail": {
+          "$ref": "#/$defs/richText"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalogNode"
+          }
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chapters"
+      ],
+      "properties": {
+        "chapters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/chapter"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "target": {
+      "type": "string",
+      "pattern": "^#[a-z][a-z0-9-]*$"
+    },
+    "imagePlaceholder": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "measuredImagePlaceholder": {
+      "type": "object",
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "intrinsicWidth",
+            "intrinsicHeight"
+          ]
+        },
+        {
+          "required": [
+            "aspectRatio"
+          ]
+        }
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "intrinsicWidth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "intrinsicHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "aspectRatio": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "richText": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/textRun"
+      }
+    },
+    "textRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "bold",
+              "italic",
+              "underline",
+              "regular",
+              "nowrap"
+            ]
+          }
+        }
+      }
+    },
+    "catalogNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "target"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalogNode"
+          }
+        }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "blocks"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string"
+        },
+        "toc": {
+          "type": "boolean"
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        }
+      }
+    },
+    "block": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/headingBlock"
+        },
+        {
+          "$ref": "#/$defs/textBlock"
+        },
+        {
+          "$ref": "#/$defs/warningBlock"
+        },
+        {
+          "$ref": "#/$defs/imageBlock"
+        },
+        {
+          "$ref": "#/$defs/imagePairBlock"
+        },
+        {
+          "$ref": "#/$defs/tableBlock"
+        }
+      ]
+    },
+    "headingBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "title"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "h2",
+            "h3"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string"
+        },
+        "toc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "textBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "content"
+      ],
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "content": {
+          "$ref": "#/$defs/richText"
+        }
+      }
+    },
+    "warningBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "items"
+      ],
+      "properties": {
+        "type": {
+          "const": "warning"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/warningItem"
+          }
+        }
+      }
+    },
+    "warningItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ],
+      "properties": {
+        "icon": {
+          "$ref": "#/$defs/imagePlaceholder"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/richText"
+        }
+      }
+    },
+    "imageBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "image"
+      ],
+      "properties": {
+        "type": {
+          "const": "image"
+        },
+        "image": {
+          "$ref": "#/$defs/measuredImagePlaceholder"
+        }
+      }
+    },
+    "imagePairBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "images"
+      ],
+      "properties": {
+        "type": {
+          "const": "imagePair"
+        },
+        "align": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ]
+        },
+        "images": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/imagePlaceholder"
+          }
+        }
+      }
+    },
+    "tableBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "table"
+      ],
+      "properties": {
+        "type": {
+          "const": "table"
+        },
+        "table": {
+          "$ref": "#/$defs/hybridTable"
+        }
+      }
+    },
+    "hybridTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structure",
+        "sections"
+      ],
+      "properties": {
+        "structure": {
+          "const": "hybrid"
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/tableSection"
+          }
+        }
+      }
+    },
+    "tableSection": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/kvTableSection"
+        },
+        {
+          "$ref": "#/$defs/matrixTableSection"
+        },
+        {
+          "$ref": "#/$defs/groupTableSection"
+        }
+      ]
+    },
+    "kvTableSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "rows"
+      ],
+      "properties": {
+        "type": {
+          "const": "kv"
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/kvRow"
+          }
+        }
+      }
+    },
+    "matrixTableSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "headers",
+        "rows"
+      ],
+      "properties": {
+        "type": {
+          "const": "matrix"
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/tableCell"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/tableCell"
+            }
+          }
+        }
+      }
+    },
+    "groupTableSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "rows"
+      ],
+      "properties": {
+        "type": {
+          "const": "group"
+        },
+        "title": {
+          "type": "string"
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/kvRow"
+          }
+        }
+      }
+    },
+    "kvRow": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/tableCell"
+      }
+    },
+    "tableCell": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/richText"
+        }
+      ]
+    }
+  }
+}
