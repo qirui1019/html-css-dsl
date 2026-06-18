@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SEESII Instruction Manual - Cover</title>
+  <title>SEESII Instruction Manual</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,6 @@
   <div
     class="module cover-hero"
     data-module-type="coverHero"
-    data-background-source="assets/coverTopShape.png"
   >
 
     <!-- 品牌 Logo -->
@@ -64,7 +63,7 @@
         data-element-type="importantNoteTitle"
         data-bind="cover.importantNote.title"
       >
-        IMPORTANT NOTE
+        IMPORTANT NOTE:
       </div>
 
       <div
@@ -137,6 +136,240 @@
   </div>
 
 </section>
+
+<!-- SEESII 目录页 -->
+<section class="page page--catalog" data-page-type="catalogPage">
+  <header class="module catalog-header" data-module-type="catalogHeader">
+    <div
+      class="element catalog-brand-logo"
+      data-element-type="brandLogo"
+      data-bind="catalog.brandLogo"
+    >
+      <img
+        src="assets/logo.png"
+        alt="SEESII POWER TOOLS Logo"
+        class="catalog-brand-logo__image"
+      >
+    </div>
+
+    <div
+      class="element catalog-support-email"
+      data-element-type="supportEmail"
+      data-bind="catalog.supportEmail"
+      data-role="text"
+    >
+      seesii-tiktok-shop@outlook.com
+    </div>
+
+    <div
+      class="element catalog-right-arrow"
+      data-element-type="rightTopArrow"
+      data-role="decoration"
+    >
+      <img
+        src="assets/rightTopArrow.png"
+        alt="Right Top Arrow"
+        class="catalog-right-arrow__image"
+      >
+    </div>
+  </header>
+
+  <main class="module catalog-content" data-module-type="catalogContent">
+    <h1
+      class="element catalog-title"
+      data-element-type="catalogTitle"
+      data-bind="catalog.title"
+    >
+      TABLE OF CONTENTS
+    </h1>
+
+    <nav
+      class="module catalog-list"
+      data-module-type="catalogList"
+      data-bind="catalog.sections"
+      data-role="toc-tree"
+    >
+      <div class="catalog-node" data-bind="node">
+        <div class="element catalog-item" data-element-type="catalogItem">
+          <span class="catalog-item__title" data-bind="node.title">1.Safety Warnings</span>
+          <span class="catalog-item__leader"></span>
+          <span class="catalog-item__page" data-bind="node.startPage">01</span>
+        </div>
+
+        <div class="catalog-children" data-bind="node.children">
+          <div class="catalog-node" data-bind="node">
+            <div class="element catalog-item" data-element-type="catalogItem">
+              <span class="catalog-item__title" data-bind="node.title">1.1 General Safety Warnings for Electric Tools</span>
+              <span class="catalog-item__leader"></span>
+              <span class="catalog-item__page" data-bind="node.startPage">01</span>
+            </div>
+
+            <div class="catalog-children" data-bind="node.children"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </main>
+</section>
+
+<!-- SEESII content page template -->
+<section class="page page--content" data-page-type="contentPage">
+  <section
+    class="module chapter"
+    data-module-type="chapter"
+    data-bind="content.chapters"
+  >
+    <section
+      class="block block--h1"
+      data-type="h1"
+      data-level="1"
+      data-bind="chapter.title"
+    >
+      <div class="title-bg" aria-hidden="true">
+        <div class="title-bg__chevrons">
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+          <!-- <div class="chevron"></div>
+          <div class="chevron"></div> -->
+        </div>
+      </div>
+      <h1 class="element title chapter-title" data-element-type="primaryTitle" data-bind="chapter.title">1. SAFETY WARNINGS</h1>
+    </section>
+
+    <div
+      class="module chapter-body"
+      data-module-type="chapterBody"
+      data-bind="chapter.blocks"
+    >
+      <section
+        class="block block--h2"
+        data-type="h2"
+        data-level="2"
+        data-bind="block"
+      >
+        <div class="title-bg" aria-hidden="true"></div>
+        <h2 class="element title section-title" data-element-type="secondaryTitle" data-bind="block.title">1.1 General Safety Warnings for Electric Tools</h2>
+      </section>
+
+      <section
+        class="block block--h3"
+        data-type="h3"
+        data-level="3"
+        data-bind="block"
+      >
+        <h3 class="element subsection-title" data-element-type="tertiaryTitle" data-bind="block.title">1.Electrical Safety</h3>
+      </section>
+
+      <section
+        class="block block--text"
+        data-type="text"
+        data-level="0"
+        data-bind="block"
+      >
+        <div class="element text-content" data-element-type="textContent" data-bind="block.content">
+          Read all safety warnings, instructions, illustrations, and specifications provided with this tool.
+          Failure to follow all instructions listed below may result in electric shock, fire, or serious injury.
+          Keep all warnings and instructions for future reference.
+        </div>
+      </section>
+
+      <section
+        class="block block--warning"
+        data-type="warning"
+        data-level="0"
+        data-bind="block"
+      >
+        <div class="warning-content">
+          <div class="warning-heading">
+            <img
+              src="assets/iconInBox.png"
+              class="element warning-icon"
+              data-element-type="warningIcon"
+              data-bind-src="block.icon.src"
+              alt=""
+              aria-hidden="true"
+            >
+            <strong
+              class="element warning-title"
+              data-element-type="warningTitle"
+              data-bind="block.title"
+            >WARNING</strong>
+          </div>
+          <div
+            class="element warning-text"
+            data-element-type="warningText"
+            data-bind="block.content"
+          >
+            Read all safety warnings, instructions, illustrations, and specifications provided with this nail gun.
+            Disregarding these may lead to electric shock, fire, and/or serious injury.
+            Keep all warnings and instructions for future reference.
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="block block--image block--image-single"
+        data-type="image"
+        data-variant="single"
+        data-level="0"
+        data-bind="block"
+      >
+        <img
+          src="assets/image_single.png"
+          class="element image-content"
+          data-element-type="imageContent"
+          data-bind-src="block.src"
+          alt="Product reference image"
+        >
+      </section>
+
+      <section
+        class="block block--image-pair"
+        data-type="imagePair"
+        data-variant="pair"
+        data-level="0"
+        data-bind="block"
+      >
+        <div class="image-pair" data-bind="block.images">
+          <figure class="image-pair__slot" data-bind="image">
+            <img
+              src="assets/image_pair1.png"
+              class="element image-content image-content--pair"
+              data-element-type="imageContent"
+              data-bind-src="image.src"
+              alt="First paired reference image"
+            >
+          </figure>
+
+          <figure class="image-pair__slot" data-bind="image">
+            <img
+              src="assets/image_pair2.png"
+              class="element image-content image-content--pair"
+              data-element-type="imageContent"
+              data-bind-src="image.src"
+              alt="Second paired reference image"
+            >
+          </figure>
+        </div>
+      </section>
+
+      <section
+        class="block block--table block--hybrid"
+        data-type="table"
+        data-structure="hybrid"
+        data-bind="block.table"
+      >
+        <div class="element table-content" data-element-type="tableContent">
+          <div class="table-sections" data-role="table-sections">
+            <div class="table-section table-section--kv" data-role="table-section-kv"></div>
+            <div class="table-section table-section--matrix" data-role="table-section-matrix"></div>
+            <div class="table-section table-section--group" data-role="table-section-group"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+</section>
 </body>
 </html>
-

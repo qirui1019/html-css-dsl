@@ -1,0 +1,27 @@
+{
+  "name": "html_css_dsl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+ 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pdf": "vivliostyle build index.html -o dist/output.pdf --host 127.0.0.1 --port 13100",
+    "preview": "vivliostyle preview index.html --host 127.0.0.1 --port 13101"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qirui1019/html-css-dsl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qirui1019/html-css-dsl/issues"
+  },
+  "homepage": "https://github.com/qirui1019/html-css-dsl#readme",
+  "devDependencies": {
+    "@vivliostyle/cli": "^11.0.2"
+  }
+}
