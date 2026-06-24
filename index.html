@@ -184,38 +184,9 @@
     <nav
       class="module catalog-list catalog-list--normal"
       data-module-type="catalogList"
-      data-bind="catalog.sections"
-    >
-      <div class="catalog-node" data-bind="node">
-        <a
-          class="element catalog-item"
-          data-element-type="catalogItem"
-          href="#sec-safety-warnings"
-          data-bind-href="node.target"
-        >
-          <span class="catalog-item__title" data-bind="node.title">1.Safety Warnings</span>
-          <span class="catalog-item__leader"></span>
-          <span class="catalog-item__page" aria-hidden="true"></span>
-        </a>
-
-        <div class="catalog-children" data-bind="node.children">
-          <div class="catalog-node" data-bind="node">
-            <a
-              class="element catalog-item"
-              data-element-type="catalogItem"
-              href="#sec-general-safety-warnings"
-              data-bind-href="node.target"
-            >
-              <span class="catalog-item__title" data-bind="node.title">1.1 General Safety Warnings for Electric Tools</span>
-              <span class="catalog-item__leader"></span>
-              <span class="catalog-item__page" aria-hidden="true"></span>
-            </a>
-
-            <div class="catalog-children" data-bind="node.children"></div>
-          </div>
-        </div>
-      </div>
-    </nav>
+      data-bind-generated="toc"
+      data-toc-source="content.chapters"
+    ></nav>
   </main>
 </section>
 

@@ -81,8 +81,7 @@
       "additionalProperties": false,
       "required": [
         "supportEmail",
-        "title",
-        "sections"
+        "title"
       ],
       "properties": {
         "supportEmail": {
@@ -90,12 +89,6 @@
         },
         "title": {
           "type": "string"
-        },
-        "sections": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/catalogNode"
-          }
         }
       }
     },
@@ -119,10 +112,6 @@
     "id": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9-]*$"
-    },
-    "target": {
-      "type": "string",
-      "pattern": "^#[a-z][a-z0-9-]*$"
     },
     "imagePlaceholder": {
       "type": "object",
@@ -196,28 +185,6 @@
               "regular",
               "nowrap"
             ]
-          }
-        }
-      }
-    },
-    "catalogNode": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "title",
-        "target"
-      ],
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "target": {
-          "$ref": "#/$defs/target"
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/catalogNode"
           }
         }
       }

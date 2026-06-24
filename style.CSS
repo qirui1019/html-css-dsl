@@ -174,7 +174,7 @@
   --content-text-line-height-max: 15pt;
   --content-text-line-height: var(--content-text-line-height-default);
   --content-image-pair-slot-width: 52mm;
-  --content-image-pair-slot-height: 62mm;
+  --content-image-pair-slot-height: 40mm;
   --content-image-pair-gap: 3mm;
   --content-image-single-placeholder-width: 100%;
   --content-image-single-placeholder-height: 44mm;
@@ -188,6 +188,16 @@
   --content-warning-icon-height: 5mm;
   --content-footer-font-size: 8pt;
   --content-table-border: 0.25mm;
+  --content-space-h1-before: 10mm;
+  --content-space-h1-after: 5mm;
+  --content-space-h2-before: 8mm;
+  --content-space-h2-after: 4mm;
+  --content-space-block: 4mm;
+  --content-space-h3-before: var(--content-space-block);
+  --content-space-h3-after: var(--content-space-block);
+  --content-space-h3-text: var(--content-current-text-line-height);
+  --content-space-text-image: 3mm;
+  --content-space-image-text: 6mm;
 }
 
 *,
@@ -244,7 +254,9 @@ img {
   position: relative;
   width: var(--page-width);
   min-height: var(--page-height);
+  break-before: auto;
   break-after: page;
+  page-break-before: auto;
   page-break-after: always;
 }
 
@@ -263,6 +275,47 @@ img {
   display: block;
   background: transparent;
   border: 0;
+}
+
+/*  图片占位符可视化 正式使用时注释掉  */
+.product-image__img.image-placeholder,
+.image-content,
+.warning-icon {
+  background: rgba(17, 17, 17, 0.04);
+  box-shadow: inset 0 0 0 0.25mm rgba(17, 17, 17, 0.35);
+}
+
+.product-image__img.image-placeholder,
+.image-content {
+  position: relative;
+}
+
+.product-image__img.image-placeholder::before,
+.image-content::before {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(17, 17, 17, 0.55);
+  font-family: "New Frank", Arial, sans-serif;
+  font-size: 8pt;
+  font-weight: 700;
+  line-height: 10pt;
+  text-align: center;
+}
+
+.product-image__img.image-placeholder::before {
+  content: "COVER IMAGE PLACEHOLDER";
+}
+
+.image-content--single::before {
+  content: "SINGLE IMAGE PLACEHOLDER";
+}
+
+.image-content--pair::before {
+  content: "IMAGE PLACEHOLDER";
+  font-size: 7pt;
 }
 
 h1,
@@ -534,8 +587,10 @@ h2,
   width: 100%;
   min-height: 0;
   padding: 0;
+  break-before: page;
   break-after: page;
   break-inside: auto;
+  page-break-before: always;
   page-break-after: always;
   page-break-inside: auto;
   background: #ffffff;
@@ -741,8 +796,10 @@ h2,
   --content-current-text-line-height: var(--content-text-line-height);
   color: var(--ink);
   background: #ffffff;
+  break-before: page;
   break-after: page;
   break-inside: auto;
+  page-break-before: always;
   page-break-after: always;
   page-break-inside: auto;
 }
@@ -764,8 +821,52 @@ h2,
 .block {
   position: relative;
   display: block;
+  margin: 0;
   break-inside: auto;
   page-break-inside: auto;
+}
+
+.chapter + .chapter {
+  margin-top: var(--content-space-h1-before);
+}
+
+.block--h1 + .chapter-body {
+  margin-top: var(--content-space-h1-after);
+}
+
+.chapter-body > .block + .block {
+  margin-top: var(--content-space-block);
+}
+
+.chapter-body > .block + .block--h2 {
+  margin-top: var(--content-space-h2-before);
+}
+
+.chapter-body > .block--h2 + .block {
+  margin-top: var(--content-space-h2-after);
+}
+
+.chapter-body > .block + .block--h3 {
+  margin-top: var(--content-space-h3-before);
+}
+
+.chapter-body > .block--h3 + .block {
+  margin-top: var(--content-space-h3-after);
+}
+
+.chapter-body > .block--h3 + .block--text {
+  margin-block-start: var(--content-space-h3-text);
+  margin-top: var(--content-space-h3-text);
+}
+
+.chapter-body > .block--text + .block--image,
+.chapter-body > .block--text + .block--image-pair {
+  margin-top: var(--content-space-text-image);
+}
+
+.chapter-body > .block--image + .block--text,
+.chapter-body > .block--image-pair + .block--text {
+  margin-top: var(--content-space-image-text);
 }
 
 .block--h1,
